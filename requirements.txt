@@ -1,0 +1,5 @@
+# Project dependencies
+# This project only uses Python standard libraries
+# PyInstaller is required for packaging
+
+pyinstaller

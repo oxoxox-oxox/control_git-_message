@@ -1,7 +1,8 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QTableWidget, QTableWidgetItem, QPushButton, QTextEdit,
                              QHBoxLayout, QHeaderView)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -16,10 +17,14 @@ class MainWindow(QMainWindow):
         # Commit history table
         self.commit_table = QTableWidget()
         self.commit_table.setColumnCount(3)
-        self.commit_table.setHorizontalHeaderLabels(["SHA", "Author", "Message"])
-        self.commit_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
-        self.commit_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
-        self.commit_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        self.commit_table.setHorizontalHeaderLabels(
+            ["SHA", "Author", "Message"])
+        self.commit_table.horizontalHeader().setSectionResizeMode(
+            QHeaderView.ResizeMode.Stretch)
+        self.commit_table.setSelectionBehavior(
+            QTableWidget.SelectionBehavior.SelectRows)
+        self.commit_table.setSelectionMode(
+            QTableWidget.SelectionMode.SingleSelection)
         main_layout.addWidget(self.commit_table)
 
         # Commit message editor
@@ -28,11 +33,14 @@ class MainWindow(QMainWindow):
 
         # Buttons
         button_layout = QHBoxLayout()
-        self.amend_button = QPushButton("Amend Commit Message")
+        self.amend_button = QPushButton("Amend Last Commit")
+        self.rebase_button = QPushButton("Rebase and Edit Message")
         self.revert_button = QPushButton("Revert Commit")
         button_layout.addWidget(self.amend_button)
+        button_layout.addWidget(self.rebase_button)
         button_layout.addWidget(self.revert_button)
         main_layout.addLayout(button_layout)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
